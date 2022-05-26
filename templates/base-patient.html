@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+
+
+{% block header-content %}
+{% load static %}
+<!-- Header -->
+<header class="header">
+    <nav class="navbar navbar-expand-lg header-nav">
+        <div class="navbar-header">
+            <a id="mobile_btn" href="javascript:void(0);">
+						<span class="bar-icon">
+							<span></span>
+							<span></span>
+							<span></span>
+						</span>
+            </a>
+            <a href="/index/" class="navbar-brand logo">
+                <img src="{% static 'img/logo.png' %}" class="img-fluid" alt="Logo">
+            </a>
+        </div>
+        <div class="main-menu-wrapper">
+            <div class="menu-header">
+                <a href="/index/" class="menu-logo">
+                    <img src="{% static 'img/logo.png' %}" class="img-fluid" alt="Logo">
+                </a>
+                <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                    <i class="fas fa-times"></i>
+                </a>
+            </div>
+            <ul class="main-nav">
+
+                {% if request.path == '/patient-dashboard/' %}
+                <li class="active">
+                    {% else %}
+                <li>
+                    {% endif %}
+                    <a href="/patient-dashboard/">Dashboard</a>
+                </li>
+
+                <li class="has-submenu"><a href="#">Book Appointments <i class="fas fa-chevron-down"></i></a>
+                    <ul class="submenu">
+                        <li class="has-submenu">
+                            {% if request.path == '/hos-appointment/' %}
+                        <li class="active">
+                            {% else %}
+                        <li>
+                            {% endif %}
+                            <a href="/hos-appointment/">Hospital Appointment</a>
+                        </li>
+                        {% if request.path == '/lab-appointment/' %}
+                        <li class="active">
+                            {% else %}
+                        <li>
+                            {% endif %}
+                            <a href="/lab-appointment/">Laboratory Appointment</a>
+                        </li>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-submenu">
+                    <a href="#">Settings<i class="fas fa-chevron-down"></i></a>
+                    <ul class="submenu">
+                        {% if request.path == '/profile-settings/' %}
+                        <li class="active">
+                            {% else %}
+                        <li>
+                            {% endif %}
+                            <a href="/profile-settings/">Profile setting</a>
+                        </li>
+                        {% if request.path == '/change-password/' %}
+                        <li class="active">
+                            {% else %}
+                        <li>
+                            {% endif %}
+                            <a href="/change-password/">Change password</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-submenu">
+                    <a href="/pat-logout/">Logout </a>
+                </li>
+            </ul>
+        </div>
+        <ul class="nav header-navbar-rht">
+            <li class="nav-item contact-item">
+                <div class="header-contact-img">
+                    <i class="far fa-hospital"></i>
+                </div>
+                <div class="header-contact-detail">
+                    <p class="contact-header">Contact</p>
+                    <p class="contact-info-header"> +91 123 456 7890</p>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link header-login" href="/pat-logout/">Logout</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<!-- /Header -->
+{% endblock header-content %}
+
+
+{% block content %}
+
+
+<div id="blue-head">
+    {% block head-content %}{% endblock %}
+</div>
+
+<div class="content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <!-- Profile Sidebar -->
+            <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+                <div class="profile-sidebar">
+                    <div class="widget-profile pro-widget-content">
+                        <div class="profile-info-widget">
+                            <a href="#" class="booking-doc-img">
+                                <img src="{% static 'img/patients/patient.jpg' %}" alt="User Image">
+                            </a>
+                            <div class="profile-det-info">
+                                <h3>{{ p_data.name }}</h3>
+                                <div class="patient-details">
+                                    <h5><i class="bi bi-telephone">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                             fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                                            <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                                        </svg>
+                                    </i>{{ p_data.mobile_no }}
+                                    </h5>
+                                    <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i>{{ p_data.city }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard-widget">
+                        <nav class="dashboard-menu">
+                            <ul>
+
+                                {% if request.path == '/patient-dashboard/' %}
+                                <li class="active">
+                                    {% else %}
+                                <li>
+                                    {% endif %}
+                                    <a href="/patient-dashboard/">
+                                        <i class="fas fa-columns"></i>
+                                        <span>Dashboard</span>
+                                    </a>
+                                </li>
+
+                                {% if request.path == '/profile-settings/' %}
+                                <li class="active">
+                                    {% else %}
+                                <li>
+                                    {% endif %}
+                                    <a href="/profile-settings/">
+                                        <i class="fas fa-user-cog"></i>
+                                        <span>Profile Settings</span>
+                                    </a>
+                                </li>
+
+                                {% if request.path == '/change-password/' %}
+                                <li class="active">
+                                    {% else %}
+                                <li>
+                                    {% endif %}
+                                    <a href="/change-password/">
+                                        <i class="fas fa-lock"></i>
+                                        <span>Change Password</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="/pat-logout/">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        <span>Logout</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </nav>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- / Profile Sidebar -->
+            <div class="col-md-7 col-lg-8 col-xl-9">
+                <div class="card">
+                    <div class="card-body pt-0">
+
+                        <div id="pat-content">
+                            {% block pat-content %}{% endblock %}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock content %}

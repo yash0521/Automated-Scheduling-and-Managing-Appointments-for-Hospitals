@@ -1,0 +1,126 @@
+{% extends "base-doctor.html" %}
+{% block head-content %}
+
+{% load static %}
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-12 col-12">
+                <nav aria-label="breadcrumb" class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/#/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Schedule Leave</li>
+                    </ol>
+                </nav>
+                <h2 class="breadcrumb-title">Schedule Leave</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Breadcrumb -->
+
+{% for msg in messages %}
+{% if "error" in msg.tags %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Error : </strong> {{ msg }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
+{% endfor %}
+
+{% for msg in messages %}
+{% if "success" in msg.tags %}
+<div class="alert alert-primary" role="alert">
+     {{ msg }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
+{% endfor %}
+
+{% endblock head-content %}
+{% block doc-content %}
+
+<form method="POST" action="">
+    {% csrf_token %}
+    <!-- Date -->
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Date</h4>
+            <div class="education-info">
+                <div class="row form-row education-cont">
+                    <div class="col-12 col-md-10 col-lg-11">
+                        <div class="row form-row">
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="form-group">
+                                    <label>Leave date</label>
+                                    <input type="date" class="form-control" name="date" >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Date -->
+
+    <!-- slot1 -->
+    <div class="card" id="slot1">
+        <div class="card-body">
+            <h4 class="card-title">Slot - 1</h4>
+            <div class="awards-info">
+                <div class="row form-row awards-cont">
+                    <div class="col-12 col-md-5">
+                        <div class="form-group">
+                            <label>Start time</label>
+                            <input type="time" class="form-control" name="start_time1">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-5">
+                        <div class="form-group">
+                            <label>End time</label>
+                            <input type="time" class="form-control" name="end_time1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /slot1 -->
+
+    <!-- slot2 -->
+    <div class="card" id="slot2">
+        <div class="card-body">
+            <h4 class="card-title">Slot - 2</h4>
+            <div class="awards-info">
+                <div class="row form-row awards-cont">
+                    <div class="col-12 col-md-5">
+                        <div class="form-group">
+                            <label>Start time</label>
+                            <input type="time" class="form-control" name="start_time2">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-5">
+                        <div class="form-group">
+                            <label>End time</label>
+                            <input type="time" class="form-control" name="end_time2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /slot2 -->
+    <div class="submit-section submit-btn-bottom">
+        <button type="submit" class="btn btn-primary submit-btn">Save Changes</button>
+    </div>
+</form>
+
+
+<!-- /Page Content -->
+{% endblock doc-content %}

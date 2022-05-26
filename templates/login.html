@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block header-content %}
+    {% load static %}
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg header-nav">
+            <div class="navbar-header">
+                <a id="mobile_btn" href="javascript:void(0);">
+						<span class="bar-icon">
+							<span></span>
+							<span></span>
+							<span></span>
+						</span>
+                </a>
+                <a href="/index/" class="navbar-brand logo">
+                    <img src="{% static 'img/logo.png' %}" class="img-fluid" alt="Logo">
+                </a>
+            </div>
+            <div class="main-menu-wrapper">
+                <div class="menu-header">
+                    <a href="/index/" class="menu-logo">
+                        <img src="{% static 'img/logo.png' %}" class="img-fluid" alt="Logo">
+                    </a>
+                    <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <ul class="nav header-navbar-rht">
+                <li class="nav-item contact-item">
+                    <div class="header-contact-img">
+                        <i class="far fa-hospital"></i>
+                    </div>
+                    <div class="header-contact-detail">
+                        <p class="contact-header">Contact</p>
+                        <p class="contact-info-header"> +91 1234567890</p>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link header-login" href="/index/">Home</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- /Header -->
+{% endblock header-content %}
+
+{% block content %}
+
+
+    {% for msg in messages %}
+        {% if "log_error" in msg.tags %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Error : </strong> {{ msg }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    {% for msg in messages %}
+        {% if "reg_success" in msg.tags %}
+            <div class="alert alert-primary" role="alert">
+                {{ msg }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+
+    <!-- Page Content -->
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+
+                    <!-- Login Tab Content -->
+                    <div class="account-content">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-md-7 col-lg-6 login-left">
+                                <img src="{% static 'img/login-banner.png' %}" class="img-fluid" alt="Doccure Login">
+                            </div>
+                            <div class="col-md-12 col-lg-6 login-right">
+                                <div class="login-header">
+                                    <h3>Patient <span>Login</span><a href="/login-doctor/">Are you a Doctor?</a></h3>
+                                </div>
+
+                                <form action="/login-patient/" method="post">
+                                    {% csrf_token %}
+                                    <div class="form-group form-focus">
+                                        <input type="number" class="form-control floating" name="mobile">
+                                        <label class="focus-label">Mobile No</label>
+                                    </div>
+                                    <div class="form-group form-focus">
+                                        <input type="password" class="form-control floating" name="password">
+                                        <label class="focus-label">Password</label>
+                                    </div>
+                                    <div class="text-right">
+                                        <a class="forgot-link" href="/forgot-password/">Forgot Password ?</a>
+                                    </div>
+                                    <button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Login
+                                    </button>
+                                    <div class="text-center dont-have">Don’t have an account? <a
+                                            href="/register/">Register</a></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Login Tab Content -->
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /Page Content -->
+
+
+{% endblock content %}

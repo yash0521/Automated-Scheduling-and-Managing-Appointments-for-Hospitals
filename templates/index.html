@@ -1,0 +1,296 @@
+{% extends "base.html" %}
+
+{% block header-content %}
+    {% load static %}
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg header-nav">
+            <div class="navbar-header">
+                <a id="mobile_btn" href="javascript:void(0);">
+						<span class="bar-icon">
+							<span></span>
+							<span></span>
+							<span></span>
+						</span>
+                </a>
+                <a href="/index/" class="navbar-brand logo">
+                    <img src="{% static 'img/logo.png' %}" class="img-fluid" alt="Logo">
+                </a>
+            </div>
+            <div class="main-menu-wrapper">
+                <div class="menu-header">
+                    <a href="/index/" class="menu-logo">
+                        <img src="{% static 'img/logo.png' %}" class="img-fluid" alt="Logo">
+                    </a>
+                    <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <ul class="nav header-navbar-rht">
+                <li class="nav-item contact-item">
+                    <div class="header-contact-img">
+                        <i class="far fa-hospital"></i>
+                    </div>
+                    <div class="header-contact-detail">
+                        <p class="contact-header">Contact</p>
+                        <p class="contact-info-header"> +91 123 456 7890</p>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link header-login" href="/login-patient/">login / Signup </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- /Header -->
+{% endblock header-content %}
+
+
+{% block content %}
+    <head>
+    
+    </head>
+    <body>
+
+    <!-- Home Banner -->
+    <section class="section section-search">
+        <div class="container-fluid">
+            <div class="banner-wrapper">
+                <div class="banner-header text-center">
+                    <h1>Automated scheduling and managing Appointment for hospital</h1>
+                    <p>Book Appointment for best doctors, clinic & hospital</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /Home Banner -->
+
+    <!-- Clinic and Specialities -->
+    <section class="section section-specialities">
+        <div class="container-fluid">
+            <div class="section-header text-center">
+                <h2>Clinic and Specialities</h2>
+                <p class="sub-title">A small injury to complicated treatments are available here.</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-9">
+                    <!-- Slider -->
+                    <div class="specialities-slider slider">
+
+                        <!-- Slider Item -->
+                        <div class="speicality-item text-center">
+                            <div class="speicality-img">
+                                <img src="{% static 'img/specialities/specialities-01.png' %}" class="img-fluid"
+                                     alt="Speciality">
+                                <span><i class="fa fa-circle" aria-hidden="true"></i></span>
+                            </div>
+                            <p>Urology</p>
+                        </div>
+                        <!-- /Slider Item -->
+
+                        <!-- Slider Item -->
+                        <div class="speicality-item text-center">
+                            <div class="speicality-img">
+                                <img src="{% static 'img/specialities/specialities-02.png' %}" class="img-fluid"
+                                     alt="Speciality">
+                                <span><i class="fa fa-circle" aria-hidden="true"></i></span>
+                            </div>
+                            <p>Neurology</p>
+                        </div>
+                        <!-- /Slider Item -->
+
+                        <!-- Slider Item -->
+                        <div class="speicality-item text-center">
+                            <div class="speicality-img">
+                                <img src="{% static 'img/specialities/specialities-03.png' %}" class="img-fluid"
+                                     alt="Speciality">
+                                <span><i class="fa fa-circle" aria-hidden="true"></i></span>
+                            </div>
+                            <p>Orthopedic</p>
+                        </div>
+                        <!-- /Slider Item -->
+
+                        <!-- Slider Item -->
+                        <div class="speicality-item text-center">
+                            <div class="speicality-img">
+                                <img src="{% static 'img/specialities/specialities-04.png' %}" class="img-fluid"
+                                     alt="Speciality">
+                                <span><i class="fa fa-circle" aria-hidden="true"></i></span>
+                            </div>
+                            <p>Cardiologist</p>
+                        </div>
+                        <!-- /Slider Item -->
+
+                        <!-- Slider Item -->
+                        <div class="speicality-item text-center">
+                            <div class="speicality-img">
+                                <img src="{% static 'img/specialities/specialities-05.png' %}" class="img-fluid"
+                                     alt="Speciality">
+                                <span><i class="fa fa-circle" aria-hidden="true"></i></span>
+                            </div>
+                            <p>Dentist</p>
+                        </div>
+                        <!-- /Slider Item -->
+
+                    </div>
+                    <!-- /Slider -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Clinic and Specialities -->
+
+    <!-- Popular Section -->
+    <section class="section section-doctor">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="section-header ">
+                        <h2>Book Our Doctor</h2>
+                        <p>Book Appointment for best doctors, clinic & hospital</p>
+                    </div>
+                    <div class="about-content">
+                        <p>A system, who can schedule the appointment slots according to doctor's time and manage all
+                            the booked slots respectively.</p>
+                        <p>
+                        <ul>
+                            <li>Book your appointment online.</li>
+                            <li>Get appointment date and time without visiting hospital.</li>
+                            <li>Doctors can know how many patients book their appointments and how many remain for
+                                consulting.
+                            </li>
+                            <li>System will set or manage the all appointments according to doctor’s leave or any
+                                emergency occurs.
+                            </li>
+                            <li>You can change or cancel your appointment</li>
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="doctor-slider slider">
+
+                        <!-- Doctor Widget -->
+                        {% for i in d_data %}
+                            <div class="profile-widget">
+                                <div class="doc-img">
+                                    <a href="doctor-profile.html">
+                                        <img class="img-fluid" alt="User Image"
+                                             src="{% static 'img/doctors/doctor.jpg' %}">
+                                    </a>
+                                </div>
+                                <div class="pro-content">
+                                    <h3 class="title">
+                                        <a href="doctor-profile.html">Dr. {{ i.name }}</a>
+                                        <i class="fas fa-check-circle verified"></i>
+                                    </h3>
+                                    <p class="bi bi-envelope">{{ i.doc_type }} doctor</p>
+                                    <ul class="available-info">
+                                        <li>
+                                            <i class="bi bi-envelope"></i> {{ i.degree }}
+                                        </li>
+                                        <li>
+                                            <i class="bi bi-envelope"></i> {{ i.speciality }}
+                                        </li>
+                                        <li>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor"
+                                                 class="bi bi-envelope" viewBox="0 0 16 16">
+                                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                                            </svg>
+                                            <i class="bi bi-envelope"> </i> {{ i.email }}
+                                        </li>
+                                    </ul>
+                                    <div class="row row-sm">
+                                        <div class="col-12">
+                                            <a href="/login-patient/" class="btn book-btn">Book Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <!-- /Doctor Widget -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /Popular Section -->
+
+    <!-- Availabe Features -->
+    <section class="section section-features">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-5 features-img">
+                    <img src="{% static 'img/features/feature.png' %}" class="img-fluid" alt="Feature">
+                </div>
+                <div class="col-md-7">
+                    <div class="section-header">
+                        <h2 class="mt-2">Availabe Features in Our Clinic</h2>
+                        <p>A small injury to complicated treatments are available here.</p>
+                    </div>
+                    <div class="features-slider slider">
+                        <!-- Slider Item -->
+                        <div class="feature-item text-center">
+                            <img src="{% static 'img/features/feature-01.jpg' %}" class="img-fluid" alt="Feature">
+                            <p>Patient Ward</p>
+                        </div>
+                        <!-- /Slider Item -->
+
+                        <!-- Slider Item -->
+                        <div class="feature-item text-center">
+                            <img src="{% static 'img/features/feature-02.jpg' %}" class="img-fluid" alt="Feature">
+                            <p>Test Room</p>
+                        </div>
+                        <!-- /Slider Item -->
+
+                        <!-- Slider Item -->
+                        <div class="feature-item text-center">
+                            <img src="{% static 'img/features/feature-03.jpg' %}" class="img-fluid" alt="Feature">
+                            <p>ICU</p>
+                        </div>
+                        <!-- /Slider Item -->
+
+                        <!-- Slider Item -->
+                        <div class="feature-item text-center">
+                            <img src="{% static 'img/features/feature-04.jpg' %}" class="img-fluid" alt="Feature">
+                            <p>Laboratory</p>
+                        </div>
+                        <!-- /Slider Item -->
+
+                        <!-- Slider Item -->
+                        <div class="feature-item text-center">
+                            <img src="{% static 'img/features/feature-05.jpg' %}" class="img-fluid" alt="Feature">
+                            <p>Operation</p>
+                        </div>
+                        <!-- /Slider Item -->
+
+                        <!-- Slider Item -->
+                        <div class="feature-item text-center">
+                            <img src="{% static 'img/features/feature-06.jpg' %}" class="img-fluid" alt="Feature">
+                            <p>Medical</p>
+                        </div>
+                        <!-- /Slider Item -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Availabe Features -->
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JS -->
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <!-- Slick JS -->
+    <script src="{% static 'js/slick.js' %}"></script>
+
+    <!-- Custom JS -->
+    <script src="{% static 'js/script.js' %}"></script>
+
+    </body>
+{% endblock content %}

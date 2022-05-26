@@ -1,0 +1,125 @@
+{% extends "base-doctor.html" %}
+
+{% block head-content %}
+{% load static %}
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-12 col-12">
+                <nav aria-label="breadcrumb" class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/#/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit Prescription</li>
+                    </ol>
+                </nav>
+                <h2 class="breadcrumb-title">Add Prescription</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Breadcrumb -->
+{% endblock head-content %}
+
+{% block doc-content %}
+<!-- Page Content -->
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7 col-lg-8 col-xl-9">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Edit Status</h4>
+                    </div>
+                    <!-- Prescription Item -->
+                    <div class="row">
+                        <div class="col-12">
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                    <div class="card-body">
+                                        <div class="booking-doc-info">
+                                            <div class="booking-info">
+                                                <h4>Patient Name</h4>
+                                                <input type="text" class="form-control" name="p_name"
+                                                       value="{{ h_appoint.patient.name }}"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="booking-doc-info">
+                                        <div class="booking-info">
+                                            <h4>Appointment date</h4>
+                                            <input type="text" class="form-control" name="date"
+                                                   value="{{ h_appoint.date }}"
+                                                   readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="booking-doc-info">
+                                        <div class="booking-info">
+                                            <h4>Appointment Time</h4>
+                                            <input type="text" class="form-control" name="a_time"
+                                                   value="{{ h_appoint.appointment_time }}"
+                                                   readonly>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Schedule Widget -->
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Status</h4>
+                                        <div class="education-info">
+                                            <div class="row form-row education-cont">
+                                                <div class="col-12 col-md-10 col-lg-11">
+                                                    <div class="row form-row">
+                                                        <div class="col-12 col-md-6 col-lg-4">
+                                                            <div class="form-group">
+                                                                <select name="status" class="form-control">
+                                                                    <option value="pending">
+                                                                        pending
+                                                                    </option>
+                                                                    <option value="success">
+                                                                        success
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- /Schedule Widget -->
+
+
+                                <!-- /Prescription Item -->
+
+                                <!-- Submit Section -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="submit-section">
+                                            <button type="submit" class="btn btn-primary submit-btn">Save
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /Submit Section -->
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!-- /Page Content -->
+{% endblock doc-content %}

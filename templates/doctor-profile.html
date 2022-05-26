@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block content %}
+{% block head-content %}
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-8 col-12">
+                <nav aria-label="breadcrumb" class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/#/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Doctor Profile</li>
+                    </ol>
+                </nav>
+                <h2 class="breadcrumb-title">Doctor Profile</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Breadcrumb -->
+
+{% endblock head-content %}
+
+{% load static %}
+<!-- Page Content -->
+<div class="content">
+    <div class="container">
+
+        <!-- Doctor Widget -->
+        <div class="card">
+            <div class="card-body">
+                <div class="doctor-widget">
+                    <div class="doc-info-left">
+                        <div class="doctor-img">
+                            <img src="{% static 'img/doctors/doctor.jpg' %}" class="img-fluid" alt="User Image">
+                        </div>
+                        <div class="doc-info-cont">
+                            <h4 class="doc-name">Dr. {{d_data.name}}</h4>
+                            <p class="doc-speciality">{{d_data.degree}}</p>
+                            <p class="doc-department">{{d_data.speciality}}</p>
+                            <div class="clinic-details">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-envelope" viewBox="0 0 16 16">
+                                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                                </svg>
+                                <i class="bi bi-envelope"> </i>{{d_data.email}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="doc-info-right">
+                        <div class="clinic-booking">
+                            <a class="apt-btn" href="/booking/{{d_data.id}}">Book Appointment</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Doctor Widget -->
+    </div>
+</div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+<!-- /Page Content -->
+{% endblock content %}

@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+
+<!-- Header -->
+<header class="header">
+    <nav class="navbar navbar-expand-lg header-nav">
+        <div class="navbar-header">
+            <a id="mobile_btn" href="javascript:void(0);">
+						<span class="bar-icon">
+							<span></span>
+							<span></span>
+							<span></span>
+						</span>
+            </a>
+            <a href="/index/" class="navbar-brand logo">
+                <img src="{% static 'img/logo.png' %}" class="img-fluid" alt="Logo">
+            </a>
+        </div>
+        <div class="main-menu-wrapper">
+            <div class="menu-header">
+                <a href="/index/" class="menu-logo">
+                    <img src="{% static 'img/logo.png' %}" class="img-fluid" alt="Logo">
+                </a>
+                <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                    <i class="fas fa-times"></i>
+                </a>
+            </div>
+            <ul class="main-nav">
+                {% if request.path == '/doctor-dashboard/' %}
+                <li class="active">
+                    {% else %}
+                <li>
+                    {% endif %}
+                    <a href="/doctor-dashboard/">Dashboard</a>
+                </li>
+
+
+                {% if request.path == '/my-patients/' %}
+                <li class="active">
+                    {% else %}
+                <li>
+                    {% endif %}
+                    <a href="/my-patients/">Patient list</a>
+                </li>
+
+
+                <li class="has-submenu">
+                    <a href="#">Leave<i class="fas fa-chevron-down"></i></a>
+                    <ul class="submenu">
+                        <li><a href="/schedule-timings/"><i class="fas fa-hourglass-start"> </i> &nbsp Schedule
+                            Leave</a></li>
+                        <li><a href="/leave-list/"><i class="fas fa-list"> </i> &nbsp Leave list</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="/doc-logout/">Logout </a>
+                </li>
+            </ul>
+        </div>
+        <ul class="nav header-navbar-rht">
+            <li class="nav-item">
+                <a class="nav-link header-login" href="/doc-logout/">Logout</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<!-- /Header -->
+
+<div id="blue-head">
+    {% block head-content %}{% endblock %}
+</div>
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+
+                <!-- Profile Sidebar -->
+                <div class="profile-sidebar">
+                    <div class="widget-profile pro-widget-content">
+                        <div class="profile-info-widget">
+                            <a href="#" class="booking-doc-img">
+                                <img src="{% static 'img/doctors/doctor.jpg' %}" alt="User Image">
+                            </a>
+                            <div class="profile-det-info">
+                                <h3>Dr. {{ d_data.name }}</h3>
+
+                                <div class="patient-details">
+                                    <h5 class="mb-0">{{ d_data.speciality }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard-widget">
+                        <nav class="dashboard-menu">
+                            <ul>
+
+                                {% if request.path == '/doctor-dashboard/' %}
+                                <li class="active">
+                                    {% else %}
+                                <li>
+                                    {% endif %}
+                                    <a href="/doctor-dashboard/">
+                                        <i class="fas fa-columns"></i>
+                                        <span>Dashboard</span>
+                                    </a>
+                                </li>
+
+                                {% if request.path == '/doctor-profile-settings/' %}
+                                <li class="active">
+                                    {% else %}
+                                <li>
+                                    {% endif %}
+                                    <a href="/doctor-profile-settings/">
+                                        <i class="fas fa-user-cog"></i>
+                                        <span>Profile Settings</span>
+                                    </a>
+                                </li>
+
+                                {% if request.path == '/doctor-change-password/' %}
+                                <li class="active">
+                                    {% else %}
+                                <li>
+                                    {% endif %}
+                                    <a href="/doctor-change-password/">
+                                        <i class="fas fa-lock"></i>
+                                        <span>Change Password</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="/doc-logout/">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        <span>Logout</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <!-- /Profile Sidebar -->
+            </div>
+            <div class="col-md-7 col-lg-8 col-xl-9">
+                <div id="doc-content">
+                    {% block doc-content %}{% endblock doc-content %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

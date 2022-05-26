@@ -1,0 +1,116 @@
+{% extends "base-patient.html" %}
+
+{% block head-content %}
+{% load static %}
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-12 col-12">
+                <nav aria-label="breadcrumb" class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/#/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Laboratory Booking</li>
+                    </ol>
+                </nav>
+                <h2 class="breadcrumb-title">Laboratory Booking</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% for msg in messages %}
+{% if "book-success" in msg.tags %}
+<div class="alert alert-primary" role="alert">
+    {{ msg }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
+{% endfor %}
+
+
+{% for msg in messages %}
+{% if "error" in msg.tags %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Error : </strong> {{ msg }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
+{% endfor %}
+<!-- /Breadcrumb -->
+{% endblock head-content %}
+
+
+{% block pat-content %}
+<!-- Page Content -->
+<div class="content">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12">
+                <form action="/lab-booking/{{ d_data.id }}" method="POST">
+                    {% csrf_token %}
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="booking-doc-info">
+                                <div class="booking-info">
+                                    <h4>Patient Name</h4>
+                                    <input type="text" class="form-control" name="p_name" value="{{ p_data.name }}"
+                                           readonly>
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="booking-doc-info">
+                                <div class="booking-info">
+                                    <h4>Doctor Name</h4>
+                                    <input type="text" class="form-control" name="d_name"
+                                           value="Dr. {{ d_data.name }}"
+                                           readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Schedule Widget -->
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Date</h4>
+                            <div class="education-info">
+                                <div class="row form-row education-cont">
+                                    <div class="col-12 col-md-10 col-lg-11">
+                                        <div class="row form-row">
+                                            <div class="col-12 col-md-6 col-lg-4">
+                                                <div class="form-group">
+                                                    <input type="date" class="form-control" name="date">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /Schedule Widget -->
+
+                    <!-- Submit Section -->
+                    <div class="submit-section proceed-btn text-right">
+                        <button class="btn btn-primary submit-btn" type="submit">Book Appointment
+                        </button>
+                    </div>
+                    <!-- /Submit Section -->
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<!-- /Page Content -->
+{% endblock pat-content %}

@@ -1,0 +1,93 @@
+{% extends "base-doctor.html" %}
+{% load static %}
+{% block head-content %}
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-12 col-12">
+                <nav aria-label="breadcrumb" class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/#/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Leave List</li>
+                    </ol>
+                </nav>
+                <h2 class="breadcrumb-title">Leave List</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Breadcrumb -->
+{% endblock head-content %}
+<!-- Page Content -->
+{% block doc-content %}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="mb-4">Your Leaves</h4>
+                <div class="appointment-tab">
+
+
+                    <div class="tab-content">
+
+                        <!-- Upcoming Appointment Tab -->
+                        <div class="tab-pane show active" id="upcoming-appointments">
+                            <div class="card card-table mb-0">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-center mb-0">
+                                            <thead>
+                                            <tr>
+                                                <th class="text-center">Leave Date</th>
+                                                <th class="text-center">Slot 1 (From)</th>
+                                                <th class="text-center">Slot 1 (To)</th>
+                                                <th class="text-center">Slot 2 (From)</th>
+                                                <th class="text-center">Slot 2 (To)</th>
+                                                <th></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for i in dl_data %}
+                                            <tr>
+                                                <td>
+                                                    <h2 class="d-block text-info">
+                                                        {{i.date}}
+                                                    </h2>
+                                                </td>
+                                                <td class="text-center"> {{i.slot1_start_time}} </td>
+                                                <td class="text-center"> {{i.slot1_end_time}} </td>
+                                                <td class="text-center"> {{i.slot2_start_time}} </td>
+                                                <td class="text-center"> {{i.slot2_end_time}} </td>
+
+                                                <td class="text-center">
+                                                    <div class="table-action">
+                                                        <a href="/leave-delete/{{i.id}}"
+                                                           class="btn btn-sm bg-danger-light" onclick="return confirm('Delete your leave on {{i.date}} ?')">
+                                                            <i class="fas fa-times"></i> Cancel
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Upcoming Appointment Tab -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- /Page Content -->
+{% endblock doc-content %}

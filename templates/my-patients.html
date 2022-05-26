@@ -1,0 +1,71 @@
+{% extends "base-doctor.html" %}
+{% block head-content %}
+{% load static %}
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-12 col-12">
+                <nav aria-label="breadcrumb" class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/#/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">My Patients</li>
+                    </ol>
+                </nav>
+                <h2 class="breadcrumb-title">My Patients</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Breadcrumb -->
+{% endblock head-content %}
+{% block doc-content %}
+
+<!-- Page Content -->
+
+
+<div class="row row-grid">
+
+    {% for i in h_appoint %}
+
+    <div class="col-md-6 col-lg-4 col-xl-3">
+        <div class="card widget-profile pat-widget-profile">
+            <div class="card-body">
+                <div class="pro-widget-content">
+                    <div class="profile-info-widget">
+                        <a href="/patient-profile/{{i.id}}" class="booking-doc-img">
+                            <img src="{% static 'img/patients/patient.jpg' %}" alt="User Image">
+                        </a>
+                        <div class="profile-det-info">
+                            <h3><a href="/patient-profile/{{i.id}}">{{i.name}}</a></h3>
+
+                            <div class="patient-details">
+                                <h5><b>Patient ID :</b>{{i.id}}</h5>
+                                <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i>{{i.city}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="patient-info">
+                    <ul>
+                        <li>Phone <span>{{i.mobile_no}}</span></li>
+                        <li>Email <span>{{i.email}}</span></li>
+                        <li>Age <span>{{i.age}}</span></li>
+
+                    </ul>
+                </div>
+                <br>
+                <div class="row row-sm">
+                    <div class="col-12">
+                        <a href="/doc-lab-appointment/{{i.id}}" class="btn book-btn">Book Lab Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<!-- /Page Content -->
+{% endblock doc-content %}

@@ -1,0 +1,191 @@
+{% extends "base-doctor.html" %}
+
+{% block head-content %}
+{% load static %}
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-12 col-12">
+                <nav aria-label="breadcrumb" class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/#/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                    </ol>
+                </nav>
+                <h2 class="breadcrumb-title">Profile</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Breadcrumb -->
+{% endblock head-content %}
+
+{% block doc-content %}
+<!-- Page Content -->
+<div class="content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar dct-dashbd-lft">
+
+                <!-- Profile Widget -->
+                <div class="card widget-profile pat-widget-profile">
+                    <div class="card-body">
+                        <div class="pro-widget-content">
+                            <div class="profile-info-widget">
+                                <a href="#" class="booking-doc-img">
+                                    <img src="{% static 'img/patients/patient.jpg' %}" alt="User Image">
+                                </a>
+                                <div class="profile-det-info">
+                                    <h3>{{p_data.name}}</h3>
+
+                                    <div class="patient-details">
+                                        <h5><b>Patient ID : </b>{{p_data.id}}</h5>
+                                        <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i>{{p_data.city}}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="patient-info">
+                            <ul>
+                                <li>Phone <span>{{p_data.mobile_no}}</span></li>
+                                <li>Email <span>{{p_data.email}}</span></li>
+                                <li>Age <span>{{p_data.age}}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Profile Widget -->
+            </div>
+
+            <div class="col-md-7 col-lg-8 col-xl-9 dct-appoinment">
+                <div class="card">
+                    <div class="card-body pt-0">
+                        <div class="user-tabs">
+                            <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+                                <li class="nav-item-left">
+                                    <a class="nav-link active" href="#pat_appointments" data-toggle="tab">Hospital
+                                        Appointments</a>
+                                </li>
+                                <li class="nav-item-left">
+                                    <a class="nav-link" href="#lab_appointments" data-toggle="tab">Laboratory
+                                        Appointments</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+
+                            <!-- Appointment Tab -->
+                            <div id="pat_appointments" class="tab-pane fade show active">
+                                <div class="card card-table mb-0">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover table-center mb-0">
+                                                <thead>
+                                                <tr>
+                                                    <th>Doctor</th>
+                                                    <th>Appt Date</th>
+                                                    <th>Time</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                {% for i in h_appoint %}
+                                                <tr>
+                                                    <td>
+                                                        <h2 class="table-avatar">
+                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
+                                                                <img class="avatar-img rounded-circle"
+                                                                     src="{% static 'img/doctors/doctor.jpg' %}"
+                                                                     alt="User Image">
+                                                            </a>
+                                                            <a href="#">Dr.
+                                                                {{i.doctor.name}}
+                                                                <span>{{i.doctor.speciality}}</span></a>
+                                                        </h2>
+                                                    </td>
+                                                    <td>{{i.date}}</td>
+                                                    <td>{{i.appointment_time}}</td>
+                                                    {% if i.status == "pending" %}
+                                                    <td><span
+                                                            class="badge badge-pill bg-warning-light">{{i.status}}</span>
+                                                    </td>
+                                                    {% else %}
+                                                    <td><span
+                                                            class="badge badge-pill bg-success-light">{{i.status}}</span>
+                                                    </td>
+                                                    {% endif %}
+                                                </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Appointment Tab -->
+
+                            <!-- Appointment Tab -->
+                            <div id="lab_appointments" class="tab-pane fade show active">
+                                <div class="card card-table mb-0">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover table-center mb-0">
+                                                <thead>
+                                                <tr>
+                                                    <th>Doctor</th>
+                                                    <th>Appt Date</th>
+                                                    <th>Time</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                {% for i in l_appoint %}
+                                                <tr>
+                                                    <td>
+                                                        <h2 class="table-avatar">
+                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
+                                                                <img class="avatar-img rounded-circle"
+                                                                     src="{% static 'img/doctors/doctor.jpg' %}"
+                                                                     alt="User Image">
+                                                            </a>
+                                                            <a href="#">Dr.
+                                                                {{i.doctor.name}}
+                                                                <span>{{i.doctor.speciality}}</span></a>
+                                                        </h2>
+                                                    </td>
+                                                    <td>{{i.date}}</td>
+                                                    <td>{{i.appointment_time}}</td>
+                                                    {% if i.status == "pending" %}
+                                                    <td><span
+                                                            class="badge badge-pill bg-warning-light">{{i.status}}</span>
+                                                    </td>
+                                                    {% else %}
+                                                    <td><span
+                                                            class="badge badge-pill bg-success-light">{{i.status}}</span>
+                                                    </td>
+                                                    {% endif %}
+                                                </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Appointment Tab -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!-- /Page Content -->
+{% endblock doc-content %}
